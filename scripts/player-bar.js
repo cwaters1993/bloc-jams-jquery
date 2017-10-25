@@ -14,4 +14,13 @@ $( document ).ready(function() {
     const nextSong = album.songs[nextSongIndex];
     player.playPause(nextSong);
   });
+
+  $('button#previous').click( function() {
+    if (player.playState !== 'playing') { return; }
+
+    const currentSongIndex = album.songs.indexOf(player.currentlyPlaying);
+    if (currentSongIndex == 0) { return; }
+    
+    player.playPause(album.songs[currentSongIndex-1]);
+  });
 });
