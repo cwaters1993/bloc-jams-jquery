@@ -1,15 +1,15 @@
-class Player {
+function prettyTime (timeInSeconds) {
+  return Math.floor(timeInSeconds/60) + ":" + Math.floor((timeInSeconds%60)/10) + Math.floor(timeInSeconds%10);
+};
 
-  prettyTime (timeInSeconds) {
-    return Math.floor(timeInSeconds/60) + ":" + Math.floor((timeInSeconds%60)/10) + Math.floor(timeInSeconds%10);
-  }
+class Player {
 
   constructor () {
     this.currentlyPlaying = album.songs[0];
     this.playState = 'stopped';
     this.volume = 80;
     this.soundObject = new buzz.sound(this.currentlyPlaying.soundFileUrl);
-    $('#time-control .total-time').text(this.currentlyPlaying.duration);
+    $('#time-control .total-time').text(prettyTime(this.currentlyPlaying.duration));
   }
 
   getDuration() {
